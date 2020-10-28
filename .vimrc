@@ -14,6 +14,8 @@ set foldlevel=99
 set nu
 set rnu
 set incsearch
+set ignorecase
+set smartcase
 
 " Disable annoying beeping
 set noerrorbells
