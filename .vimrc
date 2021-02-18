@@ -14,8 +14,6 @@ set foldlevel=99
 set nu
 set rnu
 set incsearch
-set ignorecase
-set smartcase
 
 " Disable annoying beeping
 set noerrorbells
@@ -26,14 +24,14 @@ set t_ut=
 
 let mapleader="\<Space>"
 nnoremap <leader>l :ls<Enter>:b<Space>
+
 nnoremap <leader>cc I{# <Esc>A #}>Esc>
 nnoremap <leader>cu I<Del><Del><Del><Esc>$hhi<Del><Del><Del><Esc>
 
-nnoremap <F2> :up<Enter>
-nnoremap <leader>s :up<Enter>
+nnoremap <F2> :up<Enter>:!touch /home/user/myproject/mysite/mysite/wsgi.py<CR><CR>
+nnoremap <leader>s :up<Enter>:!touch /home/user/myproject/mysite/mysite/wsgi.py<CR><CR>
 
 nnoremap <F3> :FZF<Enter>
-
 nnoremap <leader>o :FZF<Enter>
 
 nnoremap <F4> :bd!<Enter>
@@ -41,6 +39,7 @@ nnoremap <leader>q :bd!<Enter>
 
 nnoremap <F5> :e!<Enter>
 nnoremap <F6> :Explore<CR>
+nnoremap <leader>p :Explore<CR>
 nnoremap <F7> mzgg=G`z
 
 nnoremap <F8> :q!<Enter>
@@ -67,15 +66,8 @@ nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>rv :so $MYVIMRC<CR>
 nnoremap <leader>f <PageDown>
 nnoremap <leader>b <PageUp>
-nnoremap <leader>g :vim ‘’ ./**/*.py <Bar> cw<Home><Right><Right><Right><Right><Right>
-
 nnoremap <leader>x :!python3 %<CR>
-
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+nnoremap <leader>g :vim '' ./**/*.py <Bar> cw<Home><Right><Right><Right><Right><Right>
 
 filetype plugin on
 call plug#begin('~/.vim/plugged')
@@ -93,6 +85,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 colorscheme codedark
+
+let g:coc_disable_startup_warning = 1
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -141,7 +135,6 @@ else
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
-
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
@@ -175,7 +168,6 @@ nmap <leader>rn <Plug>(coc-rename)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
@@ -210,14 +202,6 @@ command! -nargs=0 Format :call CocAction('format')
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-xmap <silent> <TAB> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -242,7 +226,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-
-
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
