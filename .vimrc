@@ -67,7 +67,7 @@ nnoremap <leader>rv :so $MYVIMRC<CR>
 nnoremap <leader>f <PageDown>
 nnoremap <leader>b <PageUp>
 nnoremap <leader>x :!python3 %<CR>
-nnoremap <leader>g :vim '' ./**/*.py <Bar> cw<Home><Right><Right><Right><Right><Right>
+" nnoremap <leader>g :vim '' ./**/*.py <Bar> cw<Home><Right><Right><Right><Right><Right>
 
 filetype plugin on
 call plug#begin('~/.vim/plugged')
