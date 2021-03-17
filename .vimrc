@@ -28,22 +28,32 @@ nnoremap <leader>l :ls<Enter>:b<Space>
 nnoremap <leader>cc I{# <Esc>A #}>Esc>
 nnoremap <leader>cu I<Del><Del><Del><Esc>$hhi<Del><Del><Del><Esc>
 
-nnoremap <F2> :up<Enter>:!touch /home/user/myproject/mysite/mysite/wsgi.py<CR><CR>
-nnoremap <leader>s :up<Enter>:!touch /home/user/myproject/mysite/mysite/wsgi.py<CR><CR>
+nnoremap <F2> :up<Enter>
+nnoremap <leader>s :up<Enter>
 
 nnoremap <F3> :FZF<Enter>
 nnoremap <leader>o :FZF<Enter>
 
-nnoremap <F4> :bd!<Enter>
-nnoremap <leader>q :bd!<Enter>
+nnoremap <F4> :bd<Enter>
+nnoremap <leader>q :bd<Enter>
+
+nnoremap <c-p> :bp<CR>
+nnoremap <c-n> :bn<CR>
 
 nnoremap <F5> :e!<Enter>
+nnoremap <leader>r :e!<Enter>
+
 nnoremap <F6> :Explore<CR>
 nnoremap <leader>p :Explore<CR>
+
 nnoremap <F7> mzgg=G`z
 
-nnoremap <F8> :q!<Enter>
-nnoremap qq :q!<Enter>
+nnoremap <F8> :qa<Enter>
+nnoremap qq :qa<Enter>
+
+nnoremap <leader>t :r! cat<Enter>
+
+nnoremap <silent><C-l> :nohl<CR><C-l>
 
 inoremap jk <Esc>
 inoremap kj <Esc>
@@ -63,11 +73,19 @@ nnoremap H ^
 nnoremap L $
 
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
-nnoremap <leader>rv :so $MYVIMRC<CR>
+" nnoremap <leader>rv :so $MYVIMRC<CR>
+
 nnoremap <leader>f <PageDown>
 nnoremap <leader>b <PageUp>
-nnoremap <leader>x :!python3 %<CR>
-" nnoremap <leader>g :vim '' ./**/*.py <Bar> cw<Home><Right><Right><Right><Right><Right>
+
+" nnoremap <leader>x :!python3 %<CR>
+
+nnoremap <leader>g :vim '' ./**/*.py <Bar> cw<Home><Right><Right><Right><Right><Right>
+
+nnoremap <leader>x :norm ds{ds{ds"<CR>
+
+autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
+autocmd FileType ansible,ansible_template,htmljinja,htmldjango,yaml let b:surround_100 = "\"{{ \r  }}\""
 
 filetype plugin on
 call plug#begin('~/.vim/plugged')
@@ -81,6 +99,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char = '|'
 
 call plug#end()
 
@@ -159,7 +179,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+" nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 " xmap <leader>f  <Plug>(coc-format-selected)
@@ -227,3 +247,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
