@@ -43,8 +43,8 @@ nnoremap <c-n> :bn<CR>
 nnoremap <F5> :e!<Enter>
 nnoremap <leader>r :e!<Enter>
 
-nnoremap <F6> :Explore<CR>
-nnoremap <leader>p :Explore<CR>
+nnoremap <F6> :NERDTree<CR>
+nnoremap <leader>p :NERDTree<CR>
 
 nnoremap <F7> mzgg=G`z
 
@@ -69,8 +69,9 @@ nnoremap ; :
 nnoremap : ;
 inoremap <c-d> <Del>
 nnoremap Y y$
-nnoremap H ^
-nnoremap L $
+"nnoremap H ^
+"nnoremap L $
+nnoremap gp `[v`]
 
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 " nnoremap <leader>rv :so $MYVIMRC<CR>
@@ -82,7 +83,9 @@ nnoremap <leader>b <PageUp>
 
 nnoremap <leader>g :vim '' ./**/*.py <Bar> cw<Home><Right><Right><Right><Right><Right>
 
-nnoremap <leader>x :norm ds{ds{ds"<CR>
+nnoremap <leader>x' cW'{{ <C-R>" }}'<Esc>
+nnoremap <leader>x" cW"{{ <C-R>" }}"<Esc>
+nnoremap <leader>xd :norm ds{ds{ds"ds'<CR>
 
 autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
 autocmd FileType ansible,ansible_template,htmljinja,htmldjango,yaml let b:surround_100 = "\"{{ \r  }}\""
@@ -99,6 +102,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '|'
 
