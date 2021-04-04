@@ -103,6 +103,7 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
+Plug 'PProvost/vim-ps1.git'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '|'
 
