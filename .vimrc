@@ -64,6 +64,8 @@ inoremap fj <Esc>
 inoremap jf <Esc>
 cnoremap fj <C-c>
 cnoremap jf <C-c>
+vnoremap fj <Esc>
+vnoremap jf <Esc>
 
 nnoremap ; :
 nnoremap : ;
