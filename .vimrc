@@ -64,8 +64,8 @@ inoremap fj <Esc>
 inoremap jf <Esc>
 cnoremap fj <C-c>
 cnoremap jf <C-c>
-vnoremap fj <Esc>
-vnoremap jf <Esc>
+vnoremap fj <C-c>
+" vnoremap jf <C-c>
 
 nnoremap ; :
 nnoremap : ;
@@ -89,7 +89,7 @@ nnoremap <leader>x' cW'{{ <C-R>" }}'<Esc>
 nnoremap <leader>x" cW"{{ <C-R>" }}"<Esc>
 nnoremap <leader>xd :norm ds{ds{ds"ds'<CR>
 
-autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
+autocmd FileType yaml,tf setlocal et ts=2 ai sw=2 sts=0
 autocmd FileType ansible,ansible_template,htmljinja,htmldjango,yaml let b:surround_100 = "\"{{ \r  }}\""
 
 filetype plugin on
@@ -100,6 +100,7 @@ let g:user_emmet_leader_key=','
 
 Plug 'tpope/vim-commentary'
 Plug 'tomasiser/vim-code-dark'
+Plug 'morhetz/gruvbox'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
